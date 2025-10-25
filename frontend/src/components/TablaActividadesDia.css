@@ -1,0 +1,46 @@
+.tabla-actividades {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 14px;
+  color: #333;
+}
+
+.tabla-actividades th,
+.tabla-actividades td {
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.tabla-actividades th {
+  background-color: #003366;
+  color: white;
+  font-weight: 600;
+}
+
+.tabla-actividades tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.tabla-actividades-container {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+  margin-top: 1rem;
+}
+
+.tabla-actividades-caption {
+  font-weight: bold;
+  color: #1b365d;
+  margin-bottom: 0.5rem;
+  font-size: 16px;
+}
+
+.mensaje-sin-actividades {
+  color: #666;
+  font-style: italic;
+  margin-top: 0.5rem;
+}

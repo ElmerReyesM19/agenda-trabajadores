@@ -1,0 +1,80 @@
+.dashboard-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.dashboard-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #1b365d;
+  margin-bottom: 24px;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.card-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  background-color: #f7faff;
+  border: 2px solid #1b365d;
+  border-radius: 8px;
+  padding: 24px 32px;
+  cursor: pointer;
+  transition: background-color .2s, transform .2s;
+}
+
+.card-button:hover {
+  background-color: #e8f3ff;
+  transform: translateY(-4px);
+}
+
+.card-icon {
+  font-size: 2.5rem;
+  color: #1b365d;
+}
+
+.card-label {
+  font-size: 1.2rem;
+  color: #1b365d;
+  font-weight: 600;
+}
+
+.btn-back {
+  background-color: #1b365d;
+  color: #fff;
+  font-size: 1rem;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+.dashboard-content {
+  display: flex;
+  gap: 32px;
+}
+
+.dashboard-side {
+  flex: 1;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  color: #1b365d;
+  margin-bottom: 16px;
+}
+
+.create-view {
+  max-width: 600px;
+  margin: 0 auto;
+}
