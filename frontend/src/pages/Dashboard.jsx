@@ -16,10 +16,11 @@ export default function Dashboard() {
     setVista('ver');
   };
 
-  const manejarActividadCreada = () => {
-    setRecargar(prev => !prev);
-    setVista('ver');
-  };
+const manejarActividadCreada = (fecha) => {
+  setFechaSeleccionada(fecha);     
+  setRecargar(prev => !prev);       
+  setVista('ver');                  
+};
 
   const volverInicio = () => {
     setVista('inicio');

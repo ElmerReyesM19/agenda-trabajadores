@@ -17,16 +17,17 @@ describe('Flujo completo agenda de trabajadores', () => {
     // Enviar formulario
     cy.contains('Crear Actividad').click();
 
-    // Esperar que se cree la actividad y se actualice la vista
-    cy.wait(1000); // ajusta si es necesario
+     // 🔄 Esperar a que se cargue la vista "ver"
+    cy.wait(1000);
 
-    // Ir a vista "Ver actividad" si es necesario
-    cy.contains('Ver actividad').click({ force: true });
 
-    // Hacer clic en el día 25 para cargar las actividades
-    cy.get('.rbc-calendar').contains('25').click({ force: true });
+    // Clic en el día 25
+    cy.get('button.rbc-button-link').contains(/^25$/).click({ force: true });
 
-    // ✅ Verificar que la actividad se muestra correctamente en la tabla
+    // Esperar carga de actividades
+    cy.contains(/^Actividades del/, { timeout: 10000 }).should('exist');
+
+    // Verificar que aparecen los datos
     cy.contains('Reunión de equipo', { timeout: 10000 }).should('exist');
     cy.contains('EmpE2E', { timeout: 10000 }).should('exist');
   });

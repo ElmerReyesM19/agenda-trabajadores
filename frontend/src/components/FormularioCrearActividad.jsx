@@ -12,7 +12,6 @@ export default function FormularioCrearActividad({ onActividadCreada }) {
   const [nuevosEmpleados, setNuevosEmpleados] = useState([]);
   const [nuevoEmpleadoInput, setNuevoEmpleadoInput] = useState('');
 
-  // Función para cargar empleados desde la base de datos
   const cargarEmpleados = async () => {
     const res = await obtenerEmpleados();
     setEmpleados(res.data);
@@ -36,11 +35,11 @@ export default function FormularioCrearActividad({ onActividadCreada }) {
       descripcion,
       lugar,
       empleadoIds: seleccionados,
-      nuevosEmpleados, // ✅ Importante
+      nuevosEmpleados,
     });
 
-    onActividadCreada();         // Para actualizar el calendario u otras vistas
-    await cargarEmpleados();     // 🔄 Recarga la lista de empleados desde la BD
+    onActividadCreada(new Date(fecha));  // ✅ enviar fecha seleccionada
+    await cargarEmpleados();
 
     setFecha('');
     setDescripcion('');
@@ -64,31 +63,17 @@ export default function FormularioCrearActividad({ onActividadCreada }) {
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label>Fecha:</label>
-          <input
-            type="date"
-            value={fecha}
-            onChange={e => setFecha(e.target.value)}
-            required
-          />
+          <input type="date" value={fecha} onChange={e => setFecha(e.target.value)} required />
         </div>
 
         <div className="form-group">
           <label>Actividad:</label>
-          <input
-            type="text"
-            value={descripcion}
-            onChange={e => setDescripcion(e.target.value)}
-            required
-          />
+          <input type="text" value={descripcion} onChange={e => setDescripcion(e.target.value)} required />
         </div>
 
         <div className="form-group">
           <label>Lugar:</label>
-          <input
-            type="text"
-            value={lugar}
-            onChange={e => setLugar(e.target.value)}
-          />
+          <input type="text" value={lugar} onChange={e => setLugar(e.target.value)} />
         </div>
 
         <div className="form-group empleados">
@@ -109,7 +94,6 @@ export default function FormularioCrearActividad({ onActividadCreada }) {
 
         <div className="form-group empleados-extras">
           <label style={{ marginTop: '1rem' }}>Agregar empleados:</label>
-
           <div style={{ display: 'flex', gap: '8px', marginBottom: '10px' }}>
             <input
               type="text"
@@ -124,29 +108,17 @@ export default function FormularioCrearActividad({ onActividadCreada }) {
 
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
             {nuevosEmpleados.map((nombre, idx) => (
-              <div
-                key={idx}
-                style={{
-                  background: '#dce6f9',
-                  padding: '6px 12px',
-                  borderRadius: '20px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}
-              >
+              <div key={idx} style={{
+                background: '#dce6f9', padding: '6px 12px', borderRadius: '20px',
+                display: 'flex', alignItems: 'center', gap: '8px'
+              }}>
                 <span>{nombre}</span>
                 <button
                   type="button"
-                  onClick={() =>
-                    setNuevosEmpleados(nuevosEmpleados.filter((_, i) => i !== idx))
-                  }
+                  onClick={() => setNuevosEmpleados(nuevosEmpleados.filter((_, i) => i !== idx))}
                   style={{
-                    background: 'transparent',
-                    border: 'none',
-                    cursor: 'pointer',
-                    color: '#333',
-                    fontWeight: 'bold'
+                    background: 'transparent', border: 'none', cursor: 'pointer',
+                    color: '#333', fontWeight: 'bold'
                   }}
                 >
                   ×
