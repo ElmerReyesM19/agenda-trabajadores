@@ -23,40 +23,51 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
+
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+
       - name: Instalar dependencias
         working-directory: backend
         run: npm ci
+
       - name: Ejecutar pruebas unitarias
         working-directory: backend
         run: npm run test:unit
+
       - name: Ejecutar pruebas de integración
         working-directory: backend
         run: npm run test:integration
-      - name: Ejecutar prueba de carga ligera
+
+      - name: Ejecutar prueba de carga ligera (Postman/Newman)
         working-directory: backend
         run: npm run test:load
 
   frontend:
     runs-on: ubuntu-latest
     needs: backend
+
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+
       - name: Instalar dependencias
         working-directory: frontend
         run: npm ci
+
       - name: Ejecutar pruebas unitarias
         working-directory: frontend
         run: npm run test:unit
-      - name: Ejecutar E2E
+
+      - name: Ejecutar pruebas E2E (Cypress)
         working-directory: frontend
         run: npm run test:e2e
